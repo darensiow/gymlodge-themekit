@@ -40,34 +40,48 @@
 
     {% if product.available %}
       <div class="product-card__price">
-        {% if product.compare_at_price > product.price %}
-          {% comment %}
-            Product is on sale
-          {% endcomment %}
-          {% if product.price_varies %}
-            {% assign sale_price = product.price | money_without_trailing_zeros %}
-            {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
-          {% else %}
-            <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
-            <s class="product-card__regular-price">{{ product.compare_at_price | money_without_trailing_zeros }}</s>
 
-            <span class="visually-hidden">{{ 'products.product.sale_price' | t }}</span>
-            {{ product.price | money_without_trailing_zeros }}
+        {% for tag in product.tags %}
+          {% if tag contains "affiliate" %}
+            {% assign isAffiliate = true %}
+            {% break %}
           {% endif %}
+          {% assign isAffiliate = false %}
+        {% endfor %}
 
+        {% unless isAffiliate %}
+          {% if product.compare_at_price > product.price %}
+            {% comment %}
+              Product is on sale
+            {% endcomment %}
+            {% if product.price_varies %}
+              {% assign sale_price = product.price | money_without_trailing_zeros %}
+              {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
+            {% else %}
+              <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
+              <s class="product-card__regular-price">{{ product.compare_at_price | money_without_trailing_zeros }}</s>
+
+              <span class="visually-hidden">{{ 'products.product.sale_price' | t }}</span>
+              {{ product.price | money_without_trailing_zeros }}
+            {% endif %}
+
+          {% else %}
+            {% comment %}
+              Not on sale, but could still have varying prices
+            {% endcomment %}
+            {% if product.price_varies %}
+              {% assign price = product.price | money_without_trailing_zeros %}
+              {{ 'products.product.from_text_html' | t: price: price }}
+            {% else %}
+              <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
+              {{ product.price | money_without_trailing_zeros }}
+            {% endif %}
+
+          {% endif %}
         {% else %}
-          {% comment %}
-            Not on sale, but could still have varying prices
-          {% endcomment %}
-          {% if product.price_varies %}
-            {% assign price = product.price | money_without_trailing_zeros %}
-            {{ 'products.product.from_text_html' | t: price: price }}
-          {% else %}
-            <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
-            {{ product.price | money_without_trailing_zeros }}
-          {% endif %}
+          <div>(Affiliate product)</div>
+        {% endunless %}
 
-        {% endif %}
         {%- unless product.price_varies -%}
           {%- if current_variant.unit_price_measurement -%}
             {% include 'product-unit-price', product_variant: current_variant, wrapper_class: "product-card__unit-price" %}
