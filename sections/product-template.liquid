@@ -222,6 +222,25 @@
           {{ product.description }}
         </div>
 
+        <!-- Tab links -->
+        <div class="tab">
+          {% if product.metafields.product-info.details != blank %}
+          <button id="defaultOpen" class="tablinks" onclick="openCity(event, 'Details')">Details</button>
+          {% endif %}
+          {% if product.metafields.product-info.warranty != blank %}
+          <button class="tablinks" onclick="openCity(event, 'Warranty')">Warranty</button>
+          {% endif %}
+        </div>
+
+        <!-- Tab content -->
+        <div id="Details" class="tabcontent">
+          <p>{{ product.metafields.product-info.details }}</p>
+        </div>
+
+        <div id="Warranty" class="tabcontent">
+          <p>{{ product.metafields.product-info.warranty }}</p>
+        </div>
+
         {% if section.settings.social_sharing_products %}
           <hr>
           {% include 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product %}
