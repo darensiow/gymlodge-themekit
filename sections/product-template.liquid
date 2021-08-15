@@ -88,61 +88,74 @@
           {% endif %}
 
           <h1 itemprop="name" class="product-single__title">{{ product.title }}</h1>
-
-          <ul class="product-single__meta-list list--no-bullets list--inline{% if cart.taxes_included or shop.shipping_policy.body != blank %} product-single__price-container{% endif %}">
-            <li id="ProductSaleTag-{{ section.id }}" class="{% unless product.compare_at_price > product.price %}hide{% endunless %}">
-              <div class="product-tag">
-                {{ 'products.product.on_sale' | t }}
-              </div>
-            </li>
-            <li>
-              {% unless product.compare_at_price_max > product.price %}
-                <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
-              {% endunless %}
-              <span id="ProductPrice-{{ section.id }}" class="product-single__price" itemprop="price" content="{{ current_variant.price | divided_by: 100.00 }}">
-                {{ current_variant.price | money }}
-              </span>
-            </li>
-            {% if product.compare_at_price_max > product.price %}
-              <li>
-                <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
-                <s id="ComparePrice-{{ section.id }}" class="product-single__price product-single__price--compare">
-                  {{ current_variant.compare_at_price | money }}
-                </s>
-              </li>
+          
+          {% for tag in product.tags %}
+            {% if tag contains "affiliate" %}
+              <div>(Affiliate product)</div>
+              {% assign isAffiliate = true %}
+              {% assign linkList = product.tags | split: 'affiliate_' %}
+              {% break %}
             {% endif %}
-            {%- if variants_with_unit_price.size > 0 -%}
-              <li>
-                {% include 'product-unit-price', product_variant: current_variant %}
+            {% assign isAffiliate = false %}
+          {% endfor %}
+
+          {% unless isAffiliate %}
+            <ul class="product-single__meta-list list--no-bullets list--inline{% if cart.taxes_included or shop.shipping_policy.body != blank %} product-single__price-container{% endif %}">
+              <li id="ProductSaleTag-{{ section.id }}" class="{% unless product.compare_at_price > product.price %}hide{% endunless %}">
+                <div class="product-tag">
+                  {{ 'products.product.on_sale' | t }}
+                </div>
               </li>
-            {%- endif -%}
-            {% assign show_stock = false %}
-            {% if current_variant.inventory_quantity < 10 and current_variant.inventory_quantity > 0 %}
-              {% assign show_stock = true %}
-            {% elsif current_variant.inventory_quantity < 1 and current_variant.incoming %}
-              {% assign show_stock = true %}
-            {% endif  %}
-            {%- if section.settings.stock_enable -%}
               <li>
-                <span id="ProductStock-{{ section.id }}" class="product-single__stock{% unless show_stock %} hide{% endunless %}">
-                  {% if current_variant.inventory_management %}
-                    {% if current_variant.inventory_quantity < 10 and current_variant.inventory_quantity > 0 %}
-                      {% assign qty = current_variant.inventory_quantity %}
-                      {{ 'products.product.stock_available' | t: count: qty }}
-                    {% elsif current_variant.inventory_quantity < 1 and current_variant.incoming %}
-                      {% if current_variant.available %}
-                        {% assign date = current_variant.next_incoming_date | date: format: 'date' %}
-                        {{ 'products.product.will_not_ship_until' | t: date: date  }}
-                      {% else %}
-                        {% assign date = current_variant.next_incoming_date | date: format: 'date' %}
-                        {{ 'products.product.will_be_in_stock_after' | t: date: date  }}
-                      {% endif %}
-                    {% endif %}
-                  {% endif %}
+                {% unless product.compare_at_price_max > product.price %}
+                  <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
+                {% endunless %}
+                <span id="ProductPrice-{{ section.id }}" class="product-single__price" itemprop="price" content="{{ current_variant.price | divided_by: 100.00 }}">
+                  {{ current_variant.price | money }}
                 </span>
               </li>
-            {% endif %}
-          </ul>
+              {% if product.compare_at_price_max > product.price %}
+                <li>
+                  <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
+                  <s id="ComparePrice-{{ section.id }}" class="product-single__price product-single__price--compare">
+                    {{ current_variant.compare_at_price | money }}
+                  </s>
+                </li>
+              {% endif %}
+              {%- if variants_with_unit_price.size > 0 -%}
+                <li>
+                  {% include 'product-unit-price', product_variant: current_variant %}
+                </li>
+              {%- endif -%}
+              {% assign show_stock = false %}
+              {% if current_variant.inventory_quantity < 10 and current_variant.inventory_quantity > 0 %}
+                {% assign show_stock = true %}
+              {% elsif current_variant.inventory_quantity < 1 and current_variant.incoming %}
+                {% assign show_stock = true %}
+              {% endif  %}
+              {%- if section.settings.stock_enable -%}
+                <li>
+                  <span id="ProductStock-{{ section.id }}" class="product-single__stock{% unless show_stock %} hide{% endunless %}">
+                    {% if current_variant.inventory_management %}
+                      {% if current_variant.inventory_quantity < 10 and current_variant.inventory_quantity > 0 %}
+                        {% assign qty = current_variant.inventory_quantity %}
+                        {{ 'products.product.stock_available' | t: count: qty }}
+                      {% elsif current_variant.inventory_quantity < 1 and current_variant.incoming %}
+                        {% if current_variant.available %}
+                          {% assign date = current_variant.next_incoming_date | date: format: 'date' %}
+                          {{ 'products.product.will_not_ship_until' | t: date: date  }}
+                        {% else %}
+                          {% assign date = current_variant.next_incoming_date | date: format: 'date' %}
+                          {{ 'products.product.will_be_in_stock_after' | t: date: date  }}
+                        {% endif %}
+                      {% endif %}
+                    {% endif %}
+                  </span>
+                </li>
+              {% endif %}
+            </ul>
+          
+          
 
           {%- if cart.taxes_included or shop.shipping_policy.body != blank -%}
             <div class="product-single__policies rte">
@@ -221,6 +234,16 @@
         <div class="rte product-single__description" itemprop="description">
           {{ product.description }}
         </div>
+
+      {% else %}
+        <div class="shopify-payment-button">
+          <a href="{{ linkList[1] }}" target="_blank">
+            <button class="shopify-payment-button__button shopify-payment-button__button--unbranded _2ogcW-Q9I-rgsSkNbRiJzA _2EiMjnumZ6FVtlC7RViKtj _2-dUletcCZ2ZL1aaH0GXxT">See on Amazon</button>
+          </a>
+        </div>
+        <br>
+        <br>
+      {% endunless %}
 
         <!-- Tab links -->
         <div class="tab">
