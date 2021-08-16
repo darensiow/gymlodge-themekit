@@ -93,6 +93,12 @@
               <div class="site-footer__section">
                 <h4 class="h1 site-footer__section-title">{{ block.settings.title | escape }}</h4>
                 <div class="rte-setting">{{ block.settings.text }}</div>
+                {% if block.settings.checkbox == true %}
+                  <a href="{{ block.settings.page.url }}">
+                    <button class="link-to-page">{{ block.settings.text-for-btn }}</button>
+                  </a>
+                {% endif %}
+                
               </div>
 
             {% when 'newsletter' %}
@@ -650,6 +656,21 @@
             "zh-CN": "<p>与您的客户分享商店详细信息、促销信息或品牌内容</p>",
             "zh-TW": "<p>與顧客分享商店的詳細資訊、宣傳活動或品牌內容。</p>"
           }
+        },
+        {
+          "type": "checkbox",
+          "id": "checkbox",
+          "label": "Enable link button to page"
+        },
+        {
+          "type": "text",
+          "id": "text-for-btn",
+          "label": "Enter text inside button"
+        },
+        {
+          "type": "page",
+          "id": "page",
+          "label": "Choose page to link to"
         }
       ]
     },
