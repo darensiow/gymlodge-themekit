@@ -25,13 +25,20 @@
         {% endif %}
         {% if section.settings.address != blank %}
           <div class="rte-setting">{{ section.settings.address }}</div>
-          {% if section.settings.button != blank and section.settings.map_address != blank %}
+          {% if section.settings.button != blank %}
+            {% comment %}
+            {% if section.settings.button != blank and section.settings.map_address != blank %}
             <p><a class="btn" href="https://maps.google.com?daddr={{ section.settings.map_address | escape }}" target="_blank">
               {% if section.settings.show_pin %}
                 <span class="icon-pin" aria-hidden="true">{% include 'icon-pin' %}</span>
               {% endif %}
               {{ section.settings.button | escape }}
             </a></p>
+            {% endif %}
+            {% endcomment %}
+            <p>
+              <a class="btn" href="{{ section.settings.page.url }}" target="_blank">{{ section.settings.button | escape }}</a>
+            </p>
           {% endif %}
         {% endif %}
       </div>
@@ -204,7 +211,7 @@
         "cs": "Najít adresu na mapě",
         "da": "Kortadresse",
         "de": "Adresse",
-        "en": "Map address",
+        "en": "Map address (not used)",
         "es": "Dirección del mapa",
         "fi": "Määritä osoite",
         "fr": "Adresse sur la carte",
@@ -324,6 +331,11 @@
         "zh-CN": "指示",
         "zh-TW": "方向"
       }
+    },
+    {
+      "type": "page",
+      "id": "page",
+      "label": "Choose page to link to"
     },
     {
       "id": "show_pin",
