@@ -32,64 +32,124 @@
         "blocks": {
           "placeholder-0": {
             "type": "slide",
-            "settings": {}
+            "settings": {
+              "image": "shopify:\/\/shop_images\/rsz_hero-image-1.jpg",
+              "image_position": "center center",
+              "title": "Fitness is in our DNA",
+              "button_label": "Shop all",
+              "button_link": "shopify:\/\/collections\/all"
+            }
           },
           "placeholder-1": {
             "type": "slide",
-            "settings": {}
+            "settings": {
+              "image": "shopify:\/\/shop_images\/rsz_hero-image-2-cropped.jpg",
+              "image_position": "center center",
+              "title": "Workout in Convenience",
+              "button_label": "Shop all",
+              "button_link": "shopify:\/\/collections\/all"
+            }
           }
         },
         "block_order": [
           "placeholder-0",
           "placeholder-1"
         ],
-        "settings": {}
+        "settings": {
+          "hero_home_height": "small",
+          "hero_home_auto": false,
+          "hero_home_auto_speed": 5
+        }
       },
       "footer": {
         "type": "footer",
         "blocks": {
+          "61ba74b1-601d-4ec5-9e4f-3a8c914f8916": {
+            "type": "text",
+            "settings": {
+              "title": "Address",
+              "text": "<p>2620 Ambridge Drive<\/p><p>Belleville, Illinois 62221, USA<\/p><p><\/p>",
+              "checkbox": true,
+              "text-for-btn": "Get Directions",
+              "page": ""
+            }
+          },
           "linklist": {
             "type": "menu",
-            "settings": {}
+            "settings": {
+              "link_list": "footer"
+            }
           },
-          "social": {
-            "type": "social",
-            "settings": {}
+          "edbeec28-1209-473d-90aa-b689af66852d": {
+            "type": "menu",
+            "settings": {
+              "link_list": "order-info"
+            }
+          },
+          "183366e7-2516-45ec-a45b-914a7dccd793": {
+            "type": "text",
+            "settings": {
+              "title": "Contact us",
+              "text": "<p>Tel: 202-555-0189<\/p><p>Email: contactus@gymlodge.com<\/p>",
+              "checkbox": true,
+              "text-for-btn": "Contact Form",
+              "page": "contact"
+            }
           }
         },
         "block_order": [
+          "61ba74b1-601d-4ec5-9e4f-3a8c914f8916",
           "linklist",
-          "social"
+          "edbeec28-1209-473d-90aa-b689af66852d",
+          "183366e7-2516-45ec-a45b-914a7dccd793"
         ],
-        "settings": {}
+        "settings": {
+          "show_payment_icons": true
+        }
       },
       "featured-collections": {
         "type": "featured-collections",
         "blocks": {
           "featured-collections-0": {
             "type": "collection",
-            "settings": {}
+            "settings": {
+              "collection": "strength"
+            }
           },
           "featured-collections-1": {
             "type": "collection",
-            "settings": {}
+            "settings": {
+              "collection": "cardio"
+            }
           },
           "featured-collections-2": {
             "type": "collection",
-            "settings": {}
+            "settings": {
+              "collection": "mats"
+            }
+          },
+          "12bb7fad-e7a1-4e8a-b076-e4bde168f20d": {
+            "type": "collection",
+            "settings": {
+              "collection": "accessories"
+            }
           }
         },
         "block_order": [
           "featured-collections-0",
           "featured-collections-1",
-          "featured-collections-2"
+          "featured-collections-2",
+          "12bb7fad-e7a1-4e8a-b076-e4bde168f20d"
         ],
-        "settings": {}
+        "settings": {
+          "stretch_collection_image": false
+        }
       },
       "featured-products": {
         "type": "featured-products",
         "settings": {
-          "collection": "frontpage"
+          "collection": "our-picks",
+          "rows": 2
         }
       },
       "image-content": {
@@ -101,7 +161,11 @@
           },
           "image-content-1": {
             "type": "text_block",
-            "settings": {}
+            "settings": {
+              "title": "Image with text",
+              "text": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+              "align": "left"
+            }
           }
         },
         "block_order": [
@@ -109,13 +173,154 @@
           "image-content-1"
         ],
         "settings": {}
+      },
+      "header": {
+        "type": "header",
+        "settings": {
+          "logo": "shopify:\/\/shop_images\/header-logo.png",
+          "logo_max_width": "200",
+          "main_linklist": "main-menu",
+          "promo_bar_enable": true,
+          "promo_bar_text": "Free delivery for orders above $150!!",
+          "promo_bar_link": ""
+        }
+      },
+      "16289986896ba8f014": {
+        "type": "quotes",
+        "blocks": {
+          "16289986896ba8f014-0": {
+            "type": "quote",
+            "settings": {
+              "quote": "<p>A very versatile piece of equipment. Priced right, it's sturdy and totally functional. Also very fast & prompt delivery. Quality is up there & worth the price. Gym Lodge also has good customer support. Answered my queries promptly and most importantly, gave me a peace of mind.<\/p>",
+              "author": "Alfred S."
+            }
+          },
+          "16289986896ba8f014-1": {
+            "type": "quote",
+            "settings": {
+              "quote": "<p>Gym Lodge is very responsive with all my queries and very prompt and accommodating with the delivery. The treadmill is also of good quality and we definitely enjoy using it. The price is also very reasonable for such a good machine.<\/p>",
+              "author": "Pam T."
+            }
+          },
+          "cc9b90cb-bf1e-4c5c-88f0-65900aa10634": {
+            "type": "quote",
+            "settings": {
+              "quote": "<p>Gym Lodge was quick to arrange a one to one replacement for my faulty treadmill on the next working day. I am appreciate of the service recovery efforts of Gym Lodge and will definitely recommend to my friends.<\/p>",
+              "author": "Shaun T."
+            }
+          }
+        },
+        "block_order": [
+          "16289986896ba8f014-0",
+          "16289986896ba8f014-1",
+          "cc9b90cb-bf1e-4c5c-88f0-65900aa10634"
+        ],
+        "settings": {
+          "title": "Testimonials"
+        }
+      },
+      "1628998729efa105cc": {
+        "type": "gallery",
+        "blocks": {
+          "1628998729efa105cc-0": {
+            "type": "image_block",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/rsz_gallery-1.jpg",
+              "image_align": "top center",
+              "button-text": "See product",
+              "product": "power-kettlebell"
+            }
+          },
+          "1628998729efa105cc-1": {
+            "type": "image_block",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/gallery-2.jpg",
+              "image_align": "top center",
+              "button-text": "See product",
+              "product": "pvc-collar-dumbbell"
+            }
+          },
+          "1628998729efa105cc-2": {
+            "type": "image_block",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/gallery-3.jpg",
+              "image_align": "top center",
+              "button-text": "See product",
+              "product": "vortex-exercise-bike"
+            }
+          }
+        },
+        "block_order": [
+          "1628998729efa105cc-0",
+          "1628998729efa105cc-1",
+          "1628998729efa105cc-2"
+        ],
+        "settings": {
+          "gallery_height": "short",
+          "gallery_name": "Gallery"
+        }
+      },
+      "1628998779d2ae71ad": {
+        "type": "rich-text",
+        "settings": {
+          "home_page_full_width": true,
+          "section_title": "Set up your gym with us today!",
+          "text": "<p>Setting up a gym? Furnish your gym with Gym Lodge's high-quality gym equipment. Gym Lodge offers a wide variety of home and commercial gym equipment, which includes treadmills, dumbbells, kettlebells other exercise accessories and more. With us, you will find a wide range of fitness equipment that will best suit your fitness routine.<\/p>",
+          "text_size": "medium"
+        }
+      },
+      "collection-filters": {
+        "type": "collection-filters",
+        "settings": {
+          "product_tags_enable": false,
+          "product_sorting_enable": true
+        }
+      },
+      "product-template": {
+        "type": "product-template",
+        "settings": {
+          "enable_ajax": true,
+          "stock_enable": false,
+          "enable_payment_button": true,
+          "social_sharing_products": true
+        }
+      },
+      "product-recommendations": {
+        "type": "product-recommendations",
+        "settings": {
+          "show_product_recommendations": true,
+          "heading": "You may also like"
+        }
+      },
+      "featured-products-subsection": {
+        "type": "featured-products-subsection",
+        "settings": {
+          "collection": ""
+        }
+      },
+      "1631959985cc1ac044": {
+        "type": "map",
+        "settings": {
+          "map_title": "Our store",
+          "address": "<p>2620 Ambridge Drive<br\/>Belleville, Illinois 62221, USA<\/p><p>Mon - Fri, 10am - 9pm<br\/>Saturday, 11am - 9pm<br\/>Sunday, 11am - 5pm<\/p>",
+          "map_address": "",
+          "button": "Get Directions",
+          "page": "about-us",
+          "show_pin": false,
+          "api_key": "",
+          "image": "shopify:\/\/shop_images\/gym_landscape.jpg",
+          "position": "center center"
+        }
       }
     },
     "content_for_index": [
       "slideshow",
+      "1628998779d2ae71ad",
       "featured-collections",
       "featured-products",
-      "image-content"
+      "1628998729efa105cc",
+      "16289986896ba8f014",
+      "1631959985cc1ac044"
     ]
   },
   "presets": {
