@@ -71,7 +71,7 @@
               "text": "<p>2620 Ambridge Drive<\/p><p>Belleville, Illinois 62221, USA<\/p><p><\/p>",
               "checkbox": true,
               "text-for-btn": "Get Directions",
-              "page": ""
+              "page": "directions-to-our-store"
             }
           },
           "linklist": {
@@ -305,7 +305,7 @@
           "address": "<p>2620 Ambridge Drive<br\/>Belleville, Illinois 62221, USA<\/p><p>Mon - Fri, 10am - 9pm<br\/>Saturday, 11am - 9pm<br\/>Sunday, 11am - 5pm<\/p>",
           "map_address": "",
           "button": "Get Directions",
-          "page": "about-us",
+          "page": "directions-to-our-store",
           "show_pin": false,
           "api_key": "",
           "image": "shopify:\/\/shop_images\/gym_landscape.jpg",
