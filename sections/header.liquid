@@ -221,6 +221,9 @@
           <a href="{{ routes.cart_url }}" class="notification__link">
             <span class="notification__message">{{ 'products.product.product_added_to_cart_html' | t }}</span>
           </a>
+          <a href="{{ routes.collections_url }}" class="notification__link">
+            <span class="notification__message"><span>Or continue shopping</span></span>
+          </a>
           <button type="button" class="text-link notification__close">
             {% include 'icon-close' %}
             <span class="icon__fallback-text">{{ 'cart.general.close_notification' | t }}</span>
